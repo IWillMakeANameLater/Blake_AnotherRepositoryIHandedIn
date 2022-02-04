@@ -1,0 +1,8 @@
+<--QUIZQUESTION-->
+QUESTION:Bob has 4 apples and Mary has 2 apples. If Mary violently assaults Bob and confiscates his apples, how many apples would Mary have?-->
+ANSWER:Mary would have 6 apples.-->
+<--END-->
+<--QUIZQUESTION-->
+QUESTION:For every 3 dogs there are 7 potatoes. Assuming each dog eats 3 potatoes, if there are 1000 dogs how many dogs go hungry?-->
+ANSWER:Around 222 dogs will go hungry.-->
+<--END-->
