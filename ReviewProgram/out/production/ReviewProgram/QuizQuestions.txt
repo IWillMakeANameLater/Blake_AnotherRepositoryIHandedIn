@@ -6,3 +6,7 @@ ANSWER:Mary would have 6 apples.-->
 QUESTION:For every 3 dogs there are 7 potatoes. Assuming each dog eats 3 potatoes, if there are 1000 dogs how many dogs go hungry?-->
 ANSWER:Around 222 dogs will go hungry.-->
 <--END-->
+<--QUIZQUESTION-->
+QUESTION:Sam and Susan are middle class workers who make on average $80,000 per year from their jobs. Sam buys 6 apples and gives them to Susan, who buys 4 apples. The market price of apples that year was $3 per pound. Assuming the farmers linearly increased their prices according to their supply of apples, calculate the amount of light energy Earth got that year from the sun in joules.-->
+ANSWER:Not enough helpful/relevant information was given to solve this question.-->
+<--END-->
