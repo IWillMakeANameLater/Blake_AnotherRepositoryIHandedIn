@@ -14,3 +14,11 @@ ANSWER:Not enough helpful/relevant information was given to solve this question.
 QUESTION:Imagine there is a big farm owned by a rich artist. A thief comes in and steals all the bananas from that farm. If the thief stole all but the 4th banana of every 4th banana tree in every 4th acre of the 4th field of crops. who is the thief?-->
 ANSWER:Sera, because she is rude and knows who she is stealing from, so she does that on purpose.-->
 <--END-->
+<--QUIZQUESTION-->
+QUESTION:Does ShareTea's Milk Tea come with pearls by default when you order them?-->
+ANSWER:As of Febuary 6th, 2022, Sunday: No. Did not get any pearls by default. You would have to add them as a topping. -->
+<--END-->
+<--QUIZQUESTION-->
+QUESTION:-->
+ANSWER:-->
+<--END-->
