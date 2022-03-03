@@ -72,7 +72,7 @@
       <recent name="com.modules.module2" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TriangleTest.testHeronsHeight">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ModuleAssignment" />
@@ -146,10 +146,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TriangleTest.testHeronsHeight" />
-        <item itemvalue="JUnit.TriangleAreaTest.getArea" />
-        <item itemvalue="JUnit.CircleTest.getArea" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CircleTest.getArea" />
+        <item itemvalue="JUnit.TriangleAreaTest.getArea" />
+        <item itemvalue="JUnit.TriangleTest.testHeronsHeight" />
         <item itemvalue="JUnit.TwoDShapeSetDimensionsTest.setWidth" />
       </list>
     </recent_temporary>
@@ -165,7 +165,8 @@
       <workItem from="1644962008253" duration="4345000" />
       <workItem from="1645047920388" duration="4671000" />
       <workItem from="1645136095885" duration="2964000" />
-      <workItem from="1645566538188" duration="930000" />
+      <workItem from="1645566538188" duration="1713000" />
+      <workItem from="1646084887755" duration="36000" />
     </task>
     <servers />
   </component>
