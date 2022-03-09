@@ -14,6 +14,7 @@ public class Main {
 
         ArrayList<Card> deck = new ArrayList<>();
 
+        //Creating the deck of cards
         for(Suit suit : suits){
             for(Face face : faces){
                 deck.add(new FaceCard(face, suit));
@@ -25,6 +26,7 @@ public class Main {
 
         }
 
+        //Testing the shuffling & sorting
         System.out.println("---------------Original-----------------");
         System.out.println(deck + "\n");
 
@@ -44,10 +46,13 @@ public class Main {
 
         ArrayList<Card> hand = new ArrayList<>();
 
+        //Creating the hand
+        //Asking for size of hand
         System.out.println("How many cards do you want to draw?");
         Scanner askUser = new Scanner(System.in);
         System.out.println('\n');
 
+        //Attempting to parse the input and pull that many cards from deck into hand
         try{
             int handSize = Integer.parseInt(askUser.nextLine());
             for(int i = 0; i < handSize; i++){
