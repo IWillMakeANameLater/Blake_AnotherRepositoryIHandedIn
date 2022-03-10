@@ -1,3 +1,7 @@
+/**
+ * An enum that represents a suit. <br>
+ * Each suit has a <code>String</code> name associated with it. <br>
+ */
 public enum Suit {
     SPADES ("Spades"),
     HEARTS ("Hearts"),

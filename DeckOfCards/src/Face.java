@@ -1,3 +1,7 @@
+/**
+ * An enum representing a certain face. <br>
+ * Each face has a <code>String</code> name and a <code>Int</code> value associated with it.
+ */
 public enum Face {
 
     ACE("Ace", 14),

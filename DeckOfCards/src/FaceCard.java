@@ -1,10 +1,14 @@
+/**
+ * A card with a face and a <code>Suit</code>. <br>
+ * Internally, the card does still have a value with it. <br>
+ * Functions similarly to a Card but compares with face instead of value.
+ */
 public class FaceCard extends Card{
 
     private Face face;
 
     /**
      * Creates a new face card given a face and a suit
-     * Since each face is tied to a value, a face card does still have a value to it
      * @param face - the face of the Face card
      * @param suit - the suit the card belongs to
      */

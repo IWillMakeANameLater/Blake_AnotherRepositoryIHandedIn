@@ -1,8 +1,11 @@
+/**
+ * A card with a numeric value and a <code>Suit</code>. <br>
+ * It acts the same as a numeric card. It's just not abstract.
+ */
 public class NumericCard extends Card{
 
     /**
-     * A constructor for a numeric card
-     * It is the same as the constructor for the Card abstract class, as the numeric card has no difference functionally from the card
+     * A constructor for a numeric card, it is the same as the one for the abstract class Card
      * @param value - Value of the card
      * @param suit - The suit the card belongs to
      */

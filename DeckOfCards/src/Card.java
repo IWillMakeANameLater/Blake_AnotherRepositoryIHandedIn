@@ -1,3 +1,8 @@
+/**
+ * An abstract class that represents a card, with a value and a <code>Suit</code>. <br>
+ * Holds a lot of the methods used by child card types. <br>
+ * Is the base foundation that the other cards build on.
+ */
 public abstract class Card{
     private int value;
     private Suit suit;
