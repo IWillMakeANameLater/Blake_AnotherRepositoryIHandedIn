@@ -2,7 +2,7 @@ public class Word {
     private final String word;
 
     public Word(String word){
-        this.word = word;
+        this.word = word.toLowerCase();
     }
 
     public String getWord(){
@@ -12,9 +12,8 @@ public class Word {
     public boolean stringIsWord(String compareTo){
         boolean hasWord = false;
         compareTo = compareTo.toLowerCase();
-        String selfWord = this.word.toLowerCase();
-        if(compareTo.contains(selfWord)){
-            compareTo = compareTo.replace(selfWord, "");
+        if(compareTo.contains(word)){
+            compareTo = compareTo.replace(word, "");
             if(compareTo.matches("^[^a-zA-Z0-9]*$")){
                 hasWord = true;
             }
@@ -29,6 +28,11 @@ public class Word {
             return stringIsWord(comparedWord.getWord());
         }
         return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.word.hashCode();
     }
 
     @Override
