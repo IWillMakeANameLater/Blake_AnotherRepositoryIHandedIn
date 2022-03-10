@@ -57,7 +57,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WordTest.wordTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="IlliadOf14Books" />
@@ -77,8 +77,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WordTest.wordTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.WordTest.wordTest" />
       </list>
     </recent_temporary>
   </component>
@@ -93,7 +93,7 @@
       <workItem from="1646691184819" duration="3047000" />
       <workItem from="1646775882155" duration="4834000" />
       <workItem from="1646862486080" duration="610000" />
-      <workItem from="1646947777839" duration="355000" />
+      <workItem from="1646947777839" duration="1099000" />
     </task>
     <servers />
   </component>
@@ -105,8 +105,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="4" />
+          <line>10</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
