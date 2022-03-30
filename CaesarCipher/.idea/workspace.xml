@@ -66,10 +66,19 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EncryptorTest.DecryptionTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CaesarCipher" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EncryptorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CaesarCipher" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="EncryptorTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -106,10 +115,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.EncryptorTest" />
         <item itemvalue="JUnit.EncryptorTest.DecryptionTest" />
         <item itemvalue="JUnit.EncryptorTest.EncryptionTest" />
         <item itemvalue="JUnit.EncryptorTest.ShiftedAlphabetTest" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -124,6 +134,7 @@
       <workItem from="1647035104717" duration="2741000" />
       <workItem from="1648500322618" duration="3216000" />
       <workItem from="1648586759487" duration="4547000" />
+      <workItem from="1648673108475" duration="860000" />
     </task>
     <servers />
   </component>

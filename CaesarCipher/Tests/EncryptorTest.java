@@ -19,8 +19,7 @@ class EncryptorTest {
 
             3) can Encryptor decrypt a message properly?
 
-            if encryptor can encrypt, then decrypt a message, while retaining original meaning.
-            Since technically, a string it encrypted should also be able to be decrypted by itself.
+            Encryptor should be able to encrypt, then decrypt a message, while retaining original meaning.
 
      */
     @Test
