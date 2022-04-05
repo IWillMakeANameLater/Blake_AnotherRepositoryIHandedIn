@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c9342fc-45aa-4963-9d5e-4df9bde0ea8d" name="Changes" comment="" />
+    <list default="true" id="933ff2a0-ac40-475e-8f78-cf3488a59508" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +23,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="277cRr1IERnmtbYF00yHHy7VQtz" />
+  <component name="ProjectId" id="27ASQNRjxPPtNU1LsWEK4y72hSp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,20 +37,16 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2c9342fc-45aa-4963-9d5e-4df9bde0ea8d" name="Changes" comment="" />
-      <created>1648674561662</created>
+      <changelist id="933ff2a0-ac40-475e-8f78-cf3488a59508" name="Changes" comment="" />
+      <created>1648761382777</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1648674561662</updated>
-      <workItem from="1648674562810" duration="2703000" />
-      <workItem from="1648761356571" duration="25000" />
+      <updated>1648761382777</updated>
+      <workItem from="1648761383939" duration="876000" />
     </task>
     <servers />
   </component>
