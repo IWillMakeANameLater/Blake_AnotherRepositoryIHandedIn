@@ -2,14 +2,32 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(fibboStep(10, 1, 0));
+        System.out.println(fibboSum(3));
     }
 
-    private static int fibboStep(int steps, ArrayList<Integer> sequence){
-        if (steps == 1){
-            return previousStep;
+    /**
+     * Gets the number at a specific position of the fibbonaci sequence
+     * @param pos the specific position of the number
+     * @return the number at that position in the fibbonaci sequence
+     */
+    private static Integer fibboStep(int pos){
+        if(pos <= 2){
+            return 1;
         } else {
-            return previousStep + fibboStep(steps-1, previousStep + previousStep2, previousStep);
+            return fibboStep(pos - 1) + fibboStep(pos - 2);
         }
+    }
+
+    /**
+     * gets the sum of the fibonnaci sequence up the specified length
+     * @param length the length of the fibbonaci sequence to go up to
+     * @return the sum of the numbers
+     */
+    private static Integer fibboSum(int length){
+        int total = 0;
+        for(int i = length; i>0; i--){
+            total += fibboStep(i);
+        }
+        return total;
     }
 }
