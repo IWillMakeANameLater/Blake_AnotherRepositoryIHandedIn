@@ -26,6 +26,12 @@ public class Encryptor {
         }
     }
 
+    /**
+     * Gets the shifted alphabet character given a base alphabet character value to shift from
+     * Shifts equal to this Encryptor's offset value to ensure uniform shifting from the alphabet
+     * @param baseValue the base alphabet character's value to shift from (sourced from base alphabet)
+     * @return the new alphabet character that has been shifted
+     */
     private char shiftedAlpha(int baseValue){
         int shiftedCharValue = Math.floorMod(baseValue + shiftValue, 26);
         return baseAlphabet.get(shiftedCharValue);
@@ -95,6 +101,9 @@ public class Encryptor {
         return newString;
     }
 
+    /**
+     * Creates an alphabet with default values (no shifts applied to it)
+     */
     private void createBaseAlphabet(){
         if(Encryptor.baseAlphabet == null){
             Encryptor.baseAlphabet = new HashMap<Integer, Character>();

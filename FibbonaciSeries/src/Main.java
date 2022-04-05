@@ -13,9 +13,8 @@ public class Main {
     private static Integer fibboStep(int pos){
         if(pos <= 2){
             return 1;
-        } else {
-            return fibboStep(pos - 1) + fibboStep(pos - 2);
         }
+        return fibboStep(pos - 1) + fibboStep(pos - 2);
     }
 
     /**
