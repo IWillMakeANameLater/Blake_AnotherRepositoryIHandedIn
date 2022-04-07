@@ -7,7 +7,7 @@ public class Main {
         System.out.println(test.compareWordLetterOffsets("brx", "you"));
         System.out.println(test.decryptWord("brx"));
 
-        ArrayList<String> decodedMessages = test.decryptMessage("L dp jrlqj wr sxqfk brx");
+        ArrayList<String> decodedMessages = test.decryptMessage("l dp jrlqj wr sxqfk brx");
         System.out.println(decodedMessages);
     }
 }

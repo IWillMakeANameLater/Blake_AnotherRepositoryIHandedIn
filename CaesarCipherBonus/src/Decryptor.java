@@ -31,73 +31,68 @@ public class Decryptor {
 
     }
 
-    public ArrayList<String> decryptMessage(String encryptedMessage){
-        encryptedMessage = encryptedMessage.toLowerCase();
+    public ArrayList<String> decryptMessage(String baseMessage){
+        String lowerCaseMessage = baseMessage.toLowerCase();
+        String encryptedMessage = lowerCaseMessage.replaceAll("[^a-zA-Z ]", "");
+
         String[] encryptedWords = encryptedMessage.split(" ");
-        ArrayList<HashMap<Integer, String>> possibleDecryptedWords = new ArrayList<>();
+        ArrayList<DecryptedWord> possibleDecryptedWords = new ArrayList<>();
         HashSet<Integer> possibleShifts = new HashSet<>();
+        ArrayList<String> possibleDecryptedMessages = new ArrayList<>();
+
         for(String word : encryptedWords){
-            HashMap<Integer, String> decryptedWord = decryptWord(word);
-            for(Integer shift : decryptedWord.keySet()){
-                if(shift != null){
-                    possibleShifts.add(shift);
+            DecryptedWord decryptedWord = decryptWord(word);
+            for(Integer key : decryptedWord.getPossibleShifts()){
+                if(key != null){
+                    possibleShifts.add(key);
                 }
             }
             possibleDecryptedWords.add(decryptedWord);
         }
-        HashSet<Integer> correctShifts = new HashSet<>();
-        testPotentialShifts: for(Integer shift : possibleShifts){
-            for(HashMap<Integer, String> decryptedWord : possibleDecryptedWords){
-                if(decryptedWord.get(null) == null && decryptedWord.get(shift) == null){
-                    continue testPotentialShifts; // if one word doesn't match, skip over this shift
-                }
-            }
-            correctShifts.add(shift); // there may be more
-        }
-        ArrayList<String> possibleDecryptedMessages = new ArrayList<>();
-        for(Integer correctShift : correctShifts){
+
+        tryAllFoundShifts: for(Integer shift : possibleShifts){
             String fullMessage = "";
-            for(HashMap<Integer, String> decryptedWord : possibleDecryptedWords){
+            for(DecryptedWord decryptedWord : possibleDecryptedWords){
+                String shiftedString = decryptedWord.getStringFromKey(shift);
+                boolean hasNoMatches = decryptedWord.hasNoMatches();
                 String word = "";
-                if(decryptedWord.containsKey(correctShift)){
-                    word = decryptedWord.get(correctShift);
+                if(shiftedString == null){
+                    if(!hasNoMatches){
+                        continue tryAllFoundShifts;
+                    }
+                    word = decryptedWord.getStringFromKey(null);
                 } else {
-                    word = decryptedWord.get(null);
+                    word = shiftedString;
                 }
-                fullMessage += word + " ";
+                fullMessage += shiftedString + " ";
             }
             possibleDecryptedMessages.add(fullMessage);
         }
         return possibleDecryptedMessages;
     }
 
-    public HashMap<Integer, String> decryptWord(String word){
-        HashMap<Integer, String> decryptedWord = new HashMap<>();
+    public DecryptedWord decryptWord(String word){
+        DecryptedWord decryptedWord = new DecryptedWord(word);
         ArrayList<String> wordLengthSection = WORD_LENGTHS.get(word.length()-1);
         for(String potentialMatch : wordLengthSection){
             Integer offset = compareWordLetterOffsets(word, potentialMatch);
             if(offset != null){
-                decryptedWord.put(offset, potentialMatch);
+                decryptedWord.addNewDecryption(offset, potentialMatch);
             }
-        }
-        if(decryptedWord.size() == 0){ // word has no matches found
-            decryptedWord.put(null, word); // a 'null' entry to show that there are no existing matches, only situation where a null key would exist is if there are no matching words
         }
         return decryptedWord;
     }
 
     public Integer compareWordLetterOffsets(String word1, String word2){
         Integer offset = null;
-        Integer inverseOffset = null;
         for(int i = 0; i < word1.length(); i++){
             char char1 = word1.charAt(i);
             char char2 = word2.charAt(i);
             if(offset == null){
-                offset = Math.abs(char2-char1);
-                inverseOffset = 26-offset;
-            } else{
-                Integer newOffset = Math.abs(char2-char1);
-                Integer newInverseOffset = 26-newOffset;
+                offset = Math.floorMod(char2-char1, 26);
+            } else if (Math.floorMod(char2-char1, 26) != offset){
+                offset = null;
+                return offset;
             }
         }
         return offset;
