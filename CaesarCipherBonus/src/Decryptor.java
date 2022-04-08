@@ -4,6 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Decryptor is mostly for decrypting a given encrypted string into a message
+ */
 public class Decryptor {
     static private ArrayList<ArrayList<String>> WORD_LENGTHS = new ArrayList<ArrayList<String>>();
 
@@ -23,6 +26,9 @@ public class Decryptor {
         } catch (IOException ignored) {}
     }
 
+    /**
+     * @return the arraylist of arraylist that contains all real words used by this method, sorted according to their length
+     */
     public static ArrayList<ArrayList<String>> getWordLengths(){
         return WORD_LENGTHS;
     }
@@ -31,6 +37,15 @@ public class Decryptor {
 
     }
 
+    /**
+     * Given a string, decrypts it
+     * There many be several different possible outcomes, so it returns an arraylist
+     * This method does not account for non-alphabet characters and capitals,
+     * and will set everything to lowercase as well as removing non-alphabet characters from the output
+     * Additionally, if it finds a word that has no matching real word it will leave them in their encrypted state
+     * @param baseMessage - the base string to decrypt
+     * @return an arraylist containing the possible decryptions for the given message
+     */
     public ArrayList<String> decryptMessage(String baseMessage){
         String lowerCaseMessage = baseMessage.toLowerCase();
         String encryptedMessage = lowerCaseMessage.replaceAll("[^a-zA-Z ]", "");
@@ -64,14 +79,19 @@ public class Decryptor {
                 } else {
                     word = shiftedString;
                 }
-                fullMessage += shiftedString + " ";
+                fullMessage += word + " ";
             }
             possibleDecryptedMessages.add(fullMessage);
         }
         return possibleDecryptedMessages;
     }
 
-    public DecryptedWord decryptWord(String word){
+    /**
+     * Given an encrypted words, gets all real words that have a uniform offset from the given word
+     * @param word the word to decrypt
+     * @return a DecryptedWord with the possible shifts & words as entries in the DecryptedWord's hashmap
+     */
+    private DecryptedWord decryptWord(String word){
         DecryptedWord decryptedWord = new DecryptedWord(word);
         ArrayList<String> wordLengthSection = WORD_LENGTHS.get(word.length()-1);
         for(String potentialMatch : wordLengthSection){
@@ -83,7 +103,14 @@ public class Decryptor {
         return decryptedWord;
     }
 
-    public Integer compareWordLetterOffsets(String word1, String word2){
+    /**
+     * Given two strings, compares the characters in each string
+     * @param word1 first String to compare
+     * @param word2 second String tocompare
+     * @return If the two strings' characters have a uniform offset from eachother then it will return that offset
+     *         If not, it will return null
+     */
+    private Integer compareWordLetterOffsets(String word1, String word2){
         Integer offset = null;
         for(int i = 0; i < word1.length(); i++){
             char char1 = word1.charAt(i);
