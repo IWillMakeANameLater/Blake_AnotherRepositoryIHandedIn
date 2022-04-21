@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="774e24b5-321d-446b-b96d-668ba6588a57" name="Changes" comment="" />
+    <list default="true" id="5aa8cf41-cdec-40fb-b54b-35afeaab2a7b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +24,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="27iIvBMAPzAkkm7aVK0NNoiNUKh" />
+  <component name="ProjectId" id="27nxEVWeyfiIF9aNR7SUDzJ6iUB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,6 +40,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Gridder" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,19 +54,12 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="SortMergeArrays" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MergeSorterTest.merge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SortMergeArrays" />
+  <component name="RunManager">
+    <configuration name="ArraySumTest.sumOfArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2DArrayStuff" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MergeSorterTest" />
-      <option name="METHOD_NAME" value="merge" />
+      <option name="MAIN_CLASS_NAME" value="ArraySumTest" />
+      <option name="METHOD_NAME" value="sumOfArray" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -73,22 +67,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MergeSorterTest.merge" />
+        <item itemvalue="JUnit.ArraySumTest.sumOfArray" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="774e24b5-321d-446b-b96d-668ba6588a57" name="Changes" comment="" />
-      <created>1649796710912</created>
+      <changelist id="5aa8cf41-cdec-40fb-b54b-35afeaab2a7b" name="Changes" comment="" />
+      <created>1649969541794</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1649796710912</updated>
-      <workItem from="1649796712100" duration="1999000" />
-      <workItem from="1649882696656" duration="3621000" />
-      <workItem from="1649969365493" duration="174000" />
+      <updated>1649969541794</updated>
+      <workItem from="1649969542933" duration="2847000" />
     </task>
     <servers />
   </component>
