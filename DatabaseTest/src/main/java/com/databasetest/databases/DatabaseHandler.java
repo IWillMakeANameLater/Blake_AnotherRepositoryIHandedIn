@@ -1,6 +1,7 @@
 package com.databasetest.databases;
 
 import java.sql.*;
+import java.util.Locale;
 
 public class DatabaseHandler {
     private static final String DB_url = "jdbc:derby:database/forum;create=true";
@@ -10,7 +11,6 @@ public class DatabaseHandler {
 
     public DatabaseHandler(){
         createConnection();
-        createTable();
     }
 
     private void createConnection(){
@@ -21,8 +21,8 @@ public class DatabaseHandler {
         }
     }
 
-    private void createTable(){
-        String TABLE_NAME = "SA";
+    public String createTable(String tableName){
+        String TABLE_NAME = tableName.toUpperCase(Locale.ROOT);
         try {
             stmt = conn.createStatement();
             DatabaseMetaData dmd = conn.getMetaData();
@@ -35,25 +35,28 @@ public class DatabaseHandler {
                         + "absoluteFilePath varchar(2000), \n"
                         + "fileExtension varchar(20), \n"
                         + "fileByteSize int)";
-                stmt.execute(statement);
+                runCommand(statement);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return TABLE_NAME;
     }
 
-    /**
-     * handles requests to execute stuff on the database
-     * @return if it was successful or not
-     */
-    public boolean runCommand(String command){
+    public void insertFile(String fileName, String fileAbsolutePath, String fileExtension, Integer fileSize, String tableName){
+        String statement = "INSERT INTO " + tableName + "(fileName,absoluteFilePath,fileExtension,fileByteSize) \n"
+                + "VALUES (" + fileName + "," + fileAbsolutePath + "," + fileExtension + "," + fileSize + ")";
         try{
-            stmt = conn.createStatement();
-            stmt.execute(command);
-            return true;
-        } catch (SQLException e) {
+            runCommand(statement);
+        } catch (SQLException e){
             e.printStackTrace();
-            return false;
         }
+    }
+
+    
+
+    private void runCommand(String command) throws SQLException{ //For internal use only
+        stmt = conn.createStatement();
+        stmt.execute(command);
     }
 }
