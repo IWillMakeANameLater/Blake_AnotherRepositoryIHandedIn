@@ -1,6 +1,7 @@
 package com.databasetest.databases;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class DatabaseHandler {
@@ -43,9 +44,9 @@ public class DatabaseHandler {
         return TABLE_NAME;
     }
 
-    public void insertFile(String fileName, String fileAbsolutePath, String fileExtension, Integer fileSize, String tableName){
+    public void insertFile(DatabaseFileEntry fileToInsert, String tableName){
         String statement = "INSERT INTO " + tableName + "(fileName,absoluteFilePath,fileExtension,fileByteSize) \n"
-                + "VALUES (" + fileName + "," + fileAbsolutePath + "," + fileExtension + "," + fileSize + ")";
+                + "VALUES (" + fileToInsert.getFileName() + "," + fileToInsert.getAbsoluteFilePath() + "," + fileToInsert.getFileExtension() + "," + fileToInsert.getFileByteSize() + ")";
         try{
             runCommand(statement);
         } catch (SQLException e){
@@ -53,10 +54,49 @@ public class DatabaseHandler {
         }
     }
 
-    
+    public ArrayList<DatabaseFileEntry> getFileEntries (String tableName, String propertyIndentifier, String propertyValue){
+        return getEntriesFromSearch("SELECT * FROM " + tableName + "\n WHERE " + propertyIndentifier + "=" + propertyValue);
+    }
 
-    private void runCommand(String command) throws SQLException{ //For internal use only
+    public ArrayList<DatabaseFileEntry> getFileEntries (String tableName){
+        return getEntriesFromSearch("SELECT * FROM " + tableName);
+    }
+
+    private ArrayList<DatabaseFileEntry> getEntriesFromSearch(String searchStatement){
+        ArrayList<DatabaseFileEntry> foundEntries = new ArrayList<>();
+        try{
+            ResultSet result = runCommand(searchStatement);
+            if(result != null){
+                while(result.next()){
+                    String fileName = result.getString("fileName");
+                    String absoluteFilePath = result.getString("absoluteFilePath");
+                    String fileExtension = result.getString("fileExtension");
+                    String fileByteSize = result.getString("fileByteSize");
+                    foundEntries.add(new DatabaseFileEntry(fileName, absoluteFilePath, fileExtension, Integer.parseInt(fileByteSize)));
+                }
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return foundEntries;
+    }
+
+    public ArrayList<String> getTables(){
+        ArrayList<String> foundTables = new ArrayList<>();
+        try{
+            ResultSet result = runCommand("SHOW TABLES");
+            if()
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return foundTables;
+    }
+
+    private ResultSet runCommand(String command) throws SQLException{ //For internal use only
         stmt = conn.createStatement();
-        stmt.execute(command);
+        if(stmt.execute(command)){
+            return stmt.getResultSet();
+        }
+        return null;
     }
 }
