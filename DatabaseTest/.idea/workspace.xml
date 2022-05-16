@@ -46,11 +46,11 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.databasetest.databases.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.databasetest.userInterface.Main" />
       <module name="DatabaseTest" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.databasetest.databases.*" />
+          <option name="PATTERN" value="com.databasetest.userInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,6 +79,7 @@
       <workItem from="1652215992244" duration="3920000" />
       <workItem from="1652301964438" duration="2836000" />
       <workItem from="1652386589957" duration="2609000" />
+      <workItem from="1652734058391" duration="4436000" />
     </task>
     <servers />
   </component>

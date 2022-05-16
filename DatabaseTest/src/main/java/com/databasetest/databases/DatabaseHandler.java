@@ -23,11 +23,9 @@ public class DatabaseHandler {
     }
 
     public String createTable(String tableName){
-        String TABLE_NAME = tableName.toUpperCase(Locale.ROOT);
+        String TABLE_NAME = tableName.toUpperCase();
         try {
-            stmt = conn.createStatement();
-            DatabaseMetaData dmd = conn.getMetaData();
-            ResultSet tables = dmd.getTables(null, null, TABLE_NAME, null);
+            ResultSet tables = tableSearch(TABLE_NAME);
             if(tables.next()){
                 System.err.println("Table " + TABLE_NAME + " already exists");
             } else {
@@ -40,6 +38,7 @@ public class DatabaseHandler {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
         return TABLE_NAME;
     }
@@ -84,19 +83,30 @@ public class DatabaseHandler {
     public ArrayList<String> getTables(){
         ArrayList<String> foundTables = new ArrayList<>();
         try{
-            ResultSet result = runCommand("SHOW TABLES");
-            if()
+            ResultSet tablesInDatabase = tableSearch("%");
+            if(tablesInDatabase != null){
+                while(tablesInDatabase.next()){
+                    ResultSetMetaData tablesMetaData = tablesInDatabase.getMetaData();
+                    foundTables.add(tablesMetaData.getTableName(1));
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return foundTables;
     }
 
-    private ResultSet runCommand(String command) throws SQLException{ //For internal use only
+    private ResultSet runCommand(String command) throws SQLException{ //For internal use only\
         stmt = conn.createStatement();
         if(stmt.execute(command)){
             return stmt.getResultSet();
         }
         return null;
+    }
+
+    private ResultSet tableSearch(String tableSearchFor) throws SQLException{
+        stmt = conn.createStatement();
+        DatabaseMetaData dmd = conn.getMetaData();
+        return dmd.getTables(null, null, tableSearchFor, null);
     }
 }
