@@ -23,13 +23,11 @@ public class DatabaseHandler {
     }
 
     public String createTable(String tableName){
-        String TABLE_NAME = tableName.toUpperCase();
+        tableName = "\"" + tableName + "\"";
         try {
-            ResultSet tables = tableSearch(TABLE_NAME);
-            if(tables.next()){
-                System.err.println("Table " + TABLE_NAME + " already exists");
-            } else {
-                String statement = "CREATE TABLE " + TABLE_NAME
+            ResultSet tables = tableSearch(tableName);
+            if(!doesTableExist(tableName)){
+                String statement = "CREATE TABLE " + tableName
                         + "(fileName varchar(200) primary key, \n"
                         + "absoluteFilePath varchar(2000), \n"
                         + "fileExtension varchar(20), \n"
@@ -40,7 +38,7 @@ public class DatabaseHandler {
             e.printStackTrace();
             return null;
         }
-        return TABLE_NAME;
+        return tableName;
     }
 
     public void insertFile(DatabaseFileEntry fileToInsert, String tableName){
@@ -108,5 +106,17 @@ public class DatabaseHandler {
         stmt = conn.createStatement();
         DatabaseMetaData dmd = conn.getMetaData();
         return dmd.getTables(null, null, tableSearchFor, null);
+    }
+
+    public boolean doesTableExist(String requestName){
+        try{
+            ResultSet result = tableSearch(requestName);
+            if(result.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            System.out.println("Something went wrong with the request.");
+        }
+        return false;
     }
 }

@@ -1,8 +1,8 @@
 package com.databasetest.fileHandler;
 
 import com.databasetest.databases.DatabaseFileEntry;
-import com.databasetest.databases.DatabaseHandler;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.io.FilenameUtils;
 
@@ -10,19 +10,19 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class FileHandler {
+public class LocalSystemFileHandler {
 
-    public File getDirectory(String requestPath){
+    public static File getDirectory(String requestPath){
         File baseDirectory = new File(requestPath);
-        if(!FileUtils.isDirectory(baseDirectory)){
+        if(!baseDirectory.exists() || !FileUtils.isDirectory(baseDirectory) ){
             return null;
         }
         return baseDirectory;
     }
 
-    public ArrayList<DatabaseFileEntry> getFileEntriesFromDirectory (File requestDirectory){
+    public static ArrayList<DatabaseFileEntry> getFileEntriesFromDirectory (File requestDirectory){
         ArrayList<DatabaseFileEntry> foundFiles = new ArrayList<>();
-        Iterator<File> fileIterator = FileUtils.iterateFiles(requestDirectory,null, TrueFileFilter.INSTANCE);
+        Iterator<File> fileIterator = FileUtils.iterateFiles(requestDirectory, TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
         while(fileIterator.hasNext()){
             File nextFile = fileIterator.next();
             foundFiles.add(getInfoFromFile(nextFile));
@@ -30,7 +30,7 @@ public class FileHandler {
         return foundFiles;
     }
 
-    private DatabaseFileEntry getInfoFromFile(File requestFile){
+    private static DatabaseFileEntry getInfoFromFile(File requestFile){
         String fileName = requestFile.getName();
         String absoluteFilePath = requestFile.getAbsolutePath();
         String fileExtension = FilenameUtils.getExtension(fileName);
