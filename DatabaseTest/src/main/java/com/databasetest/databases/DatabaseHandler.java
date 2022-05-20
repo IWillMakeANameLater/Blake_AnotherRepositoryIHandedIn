@@ -9,9 +9,11 @@ public class DatabaseHandler {
 
     private static Connection conn = null;
     private static Statement stmt = null;
+    private static final String allDirectoriesTable = "\"<Directories in Database>\"";
 
     public DatabaseHandler(){
         createConnection();
+        setupTableOfDirectories();
     }
 
     private void createConnection(){
@@ -22,17 +24,38 @@ public class DatabaseHandler {
         }
     }
 
-    public String createTable(String tableName){
-        tableName = "\"" + tableName + "\"";
+    private void setupTableOfDirectories(){
         try {
-            ResultSet tables = tableSearch(tableName);
-            if(!doesTableExist(tableName)){
-                String statement = "CREATE TABLE " + tableName
-                        + "(fileName varchar(200) primary key, \n"
-                        + "absoluteFilePath varchar(2000), \n"
-                        + "fileExtension varchar(20), \n"
+            boolean tableExists = false;
+            stmt = conn.createStatement();
+            DatabaseMetaData dmd = conn.getMetaData();
+            ResultSet result = dmd.getTables(null, null, null, new String[] {"TABLE"});
+            while(result.next()){
+                String name = result.getString("TABLE_NAME");
+                if(("\"" + name + "\"").equals(allDirectoriesTable)){
+                    tableExists = true;
+                    break;
+                }
+            }
+            if(!tableExists){
+                runCommand("CREATE TABLE " + allDirectoriesTable + "(directoryName varchar(200) primary key)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String createTable(String tableName){
+        try {
+            if(tableSearch(tableName) == null){
+                String statement = "CREATE TABLE \"" + tableName + "\""
+                        + "(fileName varchar(2000), \n"
+                        + "absoluteFilePath varchar(2000) primary key, \n"
+                        + "fileExtension varchar(2000), \n"
                         + "fileByteSize int)";
                 runCommand(statement);
+                runCommand("INSERT INTO " + allDirectoriesTable + "(directoryName) \n VALUES ('" +tableName+ "')");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,8 +65,8 @@ public class DatabaseHandler {
     }
 
     public void insertFile(DatabaseFileEntry fileToInsert, String tableName){
-        String statement = "INSERT INTO " + tableName + "(fileName,absoluteFilePath,fileExtension,fileByteSize) \n"
-                + "VALUES (" + fileToInsert.getFileName() + "," + fileToInsert.getAbsoluteFilePath() + "," + fileToInsert.getFileExtension() + "," + fileToInsert.getFileByteSize() + ")";
+        String statement = "INSERT INTO \"" + tableName + "\"(fileName,absoluteFilePath,fileExtension,fileByteSize) \n"
+                + "VALUES ('" + fileToInsert.getFileName() + "','" + fileToInsert.getAbsoluteFilePath() + "','" + fileToInsert.getFileExtension() + "'," + fileToInsert.getFileByteSize() + ")";
         try{
             runCommand(statement);
         } catch (SQLException e){
@@ -51,18 +74,10 @@ public class DatabaseHandler {
         }
     }
 
-    public ArrayList<DatabaseFileEntry> getFileEntries (String tableName, String propertyIndentifier, String propertyValue){
-        return getEntriesFromSearch("SELECT * FROM " + tableName + "\n WHERE " + propertyIndentifier + "=" + propertyValue);
-    }
-
     public ArrayList<DatabaseFileEntry> getFileEntries (String tableName){
-        return getEntriesFromSearch("SELECT * FROM " + tableName);
-    }
-
-    private ArrayList<DatabaseFileEntry> getEntriesFromSearch(String searchStatement){
         ArrayList<DatabaseFileEntry> foundEntries = new ArrayList<>();
         try{
-            ResultSet result = runCommand(searchStatement);
+            ResultSet result = runCommand("SELECT * FROM \"" + tableName + "\"");
             if(result != null){
                 while(result.next()){
                     String fileName = result.getString("fileName");
@@ -81,11 +96,10 @@ public class DatabaseHandler {
     public ArrayList<String> getTables(){
         ArrayList<String> foundTables = new ArrayList<>();
         try{
-            ResultSet tablesInDatabase = tableSearch("%");
+            ResultSet tablesInDatabase = runCommand("SELECT * FROM "+allDirectoriesTable);
             if(tablesInDatabase != null){
                 while(tablesInDatabase.next()){
-                    ResultSetMetaData tablesMetaData = tablesInDatabase.getMetaData();
-                    foundTables.add(tablesMetaData.getTableName(1));
+                    foundTables.add(tablesInDatabase.getString("directoryName"));
                 }
             }
         } catch (SQLException e) {
@@ -102,21 +116,11 @@ public class DatabaseHandler {
         return null;
     }
 
-    private ResultSet tableSearch(String tableSearchFor) throws SQLException{
-        stmt = conn.createStatement();
-        DatabaseMetaData dmd = conn.getMetaData();
-        return dmd.getTables(null, null, tableSearchFor, null);
-    }
-
-    public boolean doesTableExist(String requestName){
-        try{
-            ResultSet result = tableSearch(requestName);
-            if(result.next()){
-                return true;
-            }
-        }catch(SQLException e){
-            System.out.println("Something went wrong with the request.");
+    public String tableSearch(String tableSearchFor) throws SQLException{
+        ResultSet result = runCommand("SELECT * FROM " + allDirectoriesTable + " \n WHERE directoryName = '"+tableSearchFor+"'");
+        if(result.next()){
+            return result.getString("directoryName");
         }
-        return false;
+        return null;
     }
 }

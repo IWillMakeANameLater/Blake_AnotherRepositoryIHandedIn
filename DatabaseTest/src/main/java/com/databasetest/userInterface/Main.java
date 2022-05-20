@@ -3,12 +3,13 @@ package com.databasetest.userInterface;
 import com.databasetest.databases.DatabaseFileEntry;
 import com.databasetest.databases.DatabaseHandler;
 
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         DatabaseHandler DB = new DatabaseHandler();
         FileDatabaseCommunicator communicator = new FileDatabaseCommunicator(DB);
 
@@ -23,9 +24,9 @@ public class Main {
                 case("1") -> {
                     UploadFileLoop: while(true){ // Upload Menu
                         System.out.println("Input file path of target directory.");
-                        System.out.println("Input \"Back\" to return to the menu.");
+                        System.out.println("Input \"<Go Back To Main Menu>\" to return to the menu.");
                         String filePath = userInputReader.nextLine();
-                        if(!filePath.equals("Back")){
+                        if(!filePath.equals("<Go Back To Main Menu>")){
                             if(communicator.uploadDirectory(filePath)){
                                 System.out.println("Successfully uploaded directory.");
                             } else {
@@ -39,7 +40,7 @@ public class Main {
                 }
                 case("2") -> { // Search menu
                     SearchLoop: while(true){ // Search Menu
-                        System.out.println("Search Menu:");
+                        System.out.println("\nSearch Menu:");
                         System.out.println("1 - Show All Tables");
                         System.out.println("2 - Show Files in a Table");
                         System.out.println("3 - Return to Main Menu");
@@ -53,24 +54,20 @@ public class Main {
                             case("2") -> {
                                 FileSearchLoop: while(true){
                                     System.out.println("Input a table.");
+                                    System.out.println("Enter \"<Go Back To Search Menu>\" to return to search menu");
                                     String tableName = userInputReader.nextLine();
-                                    if(DB.doesTableExist(tableName)){
-                                        System.out.println("Input search parameters. Keep both empty to show all files.");
-                                        String parameterName = userInputReader.nextLine();
-                                        String parameterValue = userInputReader.nextLine();
-                                        if(parameterName.equals("") && parameterValue.equals("")){
-                                            for(DatabaseFileEntry fileEntry:DB.getFileEntries(tableName)){
-                                                System.out.println(fileEntry);
-                                            }
-                                        }else{
-                                            for(DatabaseFileEntry fileEntry:DB.getFileEntries(tableName, parameterName, parameterValue)){
-                                                System.out.println(fileEntry);
-                                            }
+                                    if(DB.tableSearch(tableName) != null){
+                                        System.out.println("Table found, showing files: \n");
+                                        for(DatabaseFileEntry fileEntry:DB.getFileEntries(tableName)){
+                                            System.out.println(fileEntry);
+                                            System.out.println("\n");
                                         }
-                                        break FileSearchLoop;
-                                    }else{
+                                    }else if (!tableName.equals("<Go Back To Search Menu>")){
                                         System.out.println("Table not found");
+                                        continue;
                                     }
+                                    System.out.println("Returning to search menu.");
+                                    break FileSearchLoop;
                                 }
                             }
                             case("3") -> {

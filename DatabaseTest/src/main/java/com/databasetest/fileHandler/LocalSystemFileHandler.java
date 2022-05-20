@@ -35,6 +35,7 @@ public class LocalSystemFileHandler {
         String absoluteFilePath = requestFile.getAbsolutePath();
         String fileExtension = FilenameUtils.getExtension(fileName);
         Integer fileByteSize = (int) FileUtils.sizeOf(requestFile);
-        return new DatabaseFileEntry(fileName, absoluteFilePath, fileExtension, fileByteSize);
+        DatabaseFileEntry newEntry = new DatabaseFileEntry(fileName, absoluteFilePath, fileExtension, fileByteSize);
+        return newEntry;
     }
 }
