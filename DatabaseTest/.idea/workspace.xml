@@ -92,6 +92,7 @@
       <workItem from="1652907877020" duration="3181000" />
       <workItem from="1652994894441" duration="2968000" />
       <workItem from="1653079446490" duration="4674000" />
+      <workItem from="1653425177631" duration="4571000" />
     </task>
     <servers />
   </component>
@@ -102,19 +103,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/databasetest/userInterface/Main.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/databasetest/databases/DatabaseHandler.java</url>
-          <line>15</line>
+          <line>23</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/databasetest/databases/DatabaseHandler.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.sql.SQLSyntaxErrorException" package="java.sql" />

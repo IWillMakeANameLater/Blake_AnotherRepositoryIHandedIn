@@ -1,5 +1,9 @@
 package com.databasetest.databases;
 
+/**
+ * Represents a row inside the table
+ * Each instance holds the values of every column
+ */
 public class DatabaseFileEntry {
     private String fileName;
     private String absoluteFilePath;
@@ -17,33 +21,18 @@ public class DatabaseFileEntry {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
     public String getAbsoluteFilePath() {
         return absoluteFilePath;
-    }
-
-    public void setAbsoluteFilePath(String absoluteFilePath) {
-        this.absoluteFilePath = absoluteFilePath;
     }
 
     public String getFileExtension() {
         return fileExtension;
     }
 
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
-    }
-
     public Integer getFileByteSize() {
         return fileByteSize;
     }
 
-    public void setFileByteSize(Integer fileByteSize) {
-        this.fileByteSize = fileByteSize;
-    }
 
     @Override
     public String toString(){

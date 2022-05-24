@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * Responsible for directly interacting with the database that the program uses - does not handle anything else
+ * Only one instance as only one active connection can be made with the database at a time
+ */
 public class DatabaseHandler {
     private static final String DB_url = "jdbc:derby:database/forum;create=true";
 
@@ -11,6 +15,10 @@ public class DatabaseHandler {
     private static Statement stmt = null;
     private static final String allDirectoriesTable = "\"<Directories in Database>\"";
 
+    /**
+     * Creates an instance of the database handler.
+     * Will set up directories table as well if it's not present
+     */
     public DatabaseHandler(){
         createConnection();
         setupTableOfDirectories();
@@ -46,6 +54,12 @@ public class DatabaseHandler {
 
     }
 
+    /**
+     * Given a directory name, creates a new table in the database with the same name
+     * If it does not exist
+     * @param tableName name of the directory to create a table of
+     * @return name of the table from the database, regardless of if a new one has been created or not
+     */
     public String createTable(String tableName){
         try {
             if(tableSearch(tableName) == null){
@@ -64,6 +78,11 @@ public class DatabaseHandler {
         return tableName;
     }
 
+    /**
+     * Adds a specified file entry into a specific table
+     * @param fileToInsert entry containing the information of the file to put in
+     * @param tableName the name of the table to put the information in
+     */
     public void insertFile(DatabaseFileEntry fileToInsert, String tableName){
         String statement = "INSERT INTO \"" + tableName + "\"(fileName,absoluteFilePath,fileExtension,fileByteSize) \n"
                 + "VALUES ('" + fileToInsert.getFileName() + "','" + fileToInsert.getAbsoluteFilePath() + "','" + fileToInsert.getFileExtension() + "'," + fileToInsert.getFileByteSize() + ")";
@@ -74,6 +93,11 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Given a specific name of a table, gets all of the files in the database
+     * @param tableName specified table to search from
+     * @return the files in the table, as an arraylist of file entries
+     */
     public ArrayList<DatabaseFileEntry> getFileEntries (String tableName){
         ArrayList<DatabaseFileEntry> foundEntries = new ArrayList<>();
         try{
@@ -93,6 +117,9 @@ public class DatabaseHandler {
         return foundEntries;
     }
 
+    /**
+     * @return all tables present in the database excluding the table of directories
+     */
     public ArrayList<String> getTables(){
         ArrayList<String> foundTables = new ArrayList<>();
         try{
@@ -116,6 +143,12 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     *
+     * @param tableSearchFor
+     * @return
+     * @throws SQLException
+     */
     public String tableSearch(String tableSearchFor) throws SQLException{
         ResultSet result = runCommand("SELECT * FROM " + allDirectoriesTable + " \n WHERE directoryName = '"+tableSearchFor+"'");
         if(result.next()){

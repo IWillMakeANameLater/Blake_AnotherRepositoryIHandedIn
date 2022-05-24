@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Fri May 20 21:57:52 UTC 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-e37a-1937-000007670170 
-on database directory C:\Users\2112604\Documents\GitHub\Blake_AnotherRepositoryIHandedIn\DatabaseTest\database\forum with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7aec35a 
-Loaded from file:/C:/Users/2112604/AppData/Roaming/JetBrains/IntelliJIdea2021.3/jdbc-drivers/Apache%20Derby/10.15.2.0/derby-10.15.2.0.jar
-java.vendor=JetBrains s.r.o.
-java.runtime.version=11.0.13+7-b1751.25
+Tue May 24 14:54:52 PDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-f810-cb43-00000ef30998 
+on database directory C:\Users\2112604\Documents\GitHub\Blake_AnotherRepositoryIHandedIn\DatabaseTest\database\forum with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/2112604/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.2+8-86
 user.dir=C:\Users\2112604\Documents\GitHub\Blake_AnotherRepositoryIHandedIn\DatabaseTest
 os.name=Windows 10
 os.arch=amd64
