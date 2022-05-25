@@ -65,7 +65,7 @@ public class Main {
                                 FileSearchLoop: while(true){
                                     System.out.println("Input a table.");
                                     String tableName = userInputReader.nextLine();
-                                    if(DB.tableSearch(tableName) != null){
+                                    if(DB.getTables().contains(tableName)){
                                         System.out.println("Table found, showing files: \n");
                                         ArrayList<DatabaseFileEntry> foundEntries = new ArrayList<>();
                                         switch(dialogueOptionHandler(tableSearchMenuChoices)){
@@ -128,6 +128,13 @@ public class Main {
         System.out.println("Closing program.");
     }
 
+    /**
+     * Acts as a quick way to get a valid option from the user
+     * Uses an infinite loop so that they are forced to put in a valid input to proceed
+     * Also handles quit command easily for these type of option menus
+     * @param dialogueChoices Map of the options and the associated dialogue
+     * @return once the user has made a valid input, returns the kind of input it is
+     */
     private static int dialogueOptionHandler(HashMap<Integer,String> dialogueChoices){
         for(Integer dialogueIndex:dialogueChoices.keySet()){
             System.out.println(dialogueIndex.toString() + " - " + dialogueChoices.get(dialogueIndex));

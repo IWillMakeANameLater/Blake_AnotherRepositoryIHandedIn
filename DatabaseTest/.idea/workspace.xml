@@ -93,6 +93,7 @@
       <workItem from="1652994894441" duration="2968000" />
       <workItem from="1653079446490" duration="4674000" />
       <workItem from="1653425177631" duration="4571000" />
+      <workItem from="1653512345808" duration="2410000" />
     </task>
     <servers />
   </component>
@@ -104,7 +105,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/databasetest/databases/DatabaseHandler.java</url>
-          <line>23</line>
+          <line>24</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">

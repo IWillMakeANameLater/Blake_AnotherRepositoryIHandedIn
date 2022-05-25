@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * Responsible for directly interacting with the database that the program uses - does not handle anything else
+ * Responsible for directly interacting with the database that the program uses
+ * Needs to receive this data from the communicator
  * Only one instance as only one active connection can be made with the database at a time
  */
 public class DatabaseHandler {
@@ -62,7 +63,8 @@ public class DatabaseHandler {
      */
     public String createTable(String tableName){
         try {
-            if(tableSearch(tableName) == null){
+            ArrayList<String> existingTables = getTables();
+            if(!existingTables.contains(tableName)){
                 String statement = "CREATE TABLE \"" + tableName + "\""
                         + "(fileName varchar(2000), \n"
                         + "absoluteFilePath varchar(2000) primary key, \n"
@@ -139,20 +141,6 @@ public class DatabaseHandler {
         stmt = conn.createStatement();
         if(stmt.execute(command)){
             return stmt.getResultSet();
-        }
-        return null;
-    }
-
-    /**
-     *
-     * @param tableSearchFor
-     * @return
-     * @throws SQLException
-     */
-    public String tableSearch(String tableSearchFor) throws SQLException{
-        ResultSet result = runCommand("SELECT * FROM " + allDirectoriesTable + " \n WHERE directoryName = '"+tableSearchFor+"'");
-        if(result.next()){
-            return result.getString("directoryName");
         }
         return null;
     }
