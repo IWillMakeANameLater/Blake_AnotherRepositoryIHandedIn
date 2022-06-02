@@ -1,6 +1,6 @@
 package Game.GameData.Entities;
 
-import Game.GameData.GeneralInfo.GameWorld;
+import Game.GameData.GameWorld;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,8 @@ public abstract class Environment extends Entity {
 
     private ArrayList<Entity> containedThings;
 
-    public Environment(String name){
-        super(name);
+    public Environment(String name, GameWorld world){
+        super(name, world);
         containedThings = new ArrayList<>();
     }
 

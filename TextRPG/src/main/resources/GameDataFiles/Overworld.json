@@ -1,0 +1,16 @@
+{
+  "Room": [
+    {
+      "name": "Room1",
+      "roomDesc": "A room.",
+      "roomX": "3",
+      "roomY": "3"
+    },
+    {
+      "name": "Room2",
+      "roomDesc": "A room.",
+      "roomX": "4",
+      "roomY": "3"
+    }
+  ]
+}

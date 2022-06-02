@@ -1,12 +1,12 @@
 package Game.GameData.Entities;
 
-import Game.GameData.GeneralInfo.GameWorld;
+import Game.GameData.GameWorld;
 
 public abstract class Sentient extends Entity{
     private Inventory entityInventory;
 
-    public Sentient(String name){
-        super(name);
+    public Sentient(String name, GameWorld world){
+        super(name, world);
         entityInventory = new Inventory(getName() + "'s Inventory");
     }
 }

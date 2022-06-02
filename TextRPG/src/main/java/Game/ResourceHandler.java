@@ -1,5 +1,8 @@
 package Game;
 
+import Game.GameData.GameWorld;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import java.io.File;
 
 public class ResourceHandler {
@@ -9,5 +12,8 @@ public class ResourceHandler {
         this.sourceFile = sourceFile;
     }
 
-    JSON
+    public GameWorld loadFile(){
+        JsonNode
+    }
+
 }
