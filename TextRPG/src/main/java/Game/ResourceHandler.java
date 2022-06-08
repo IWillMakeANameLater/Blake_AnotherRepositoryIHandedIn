@@ -4,6 +4,7 @@ import Game.GameData.GameWorld;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.security.jgss.GSSUtil;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,9 @@ public class ResourceHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode worldFileNode = objectMapper.readTree(sourceFile);
 
+        String worldName = FilenameUtils.getBaseName(sourceFile.getName());
+        int worldSize = worldFileNode.get("WorldSize").asInt();
+        loadedWorld = new GameWorld(worldSize, worldName);
 
         Iterator<JsonNode> worldFileFields = worldFileNode.elements();
         Iterator<String> worldFileFieldNames = worldFileNode.fieldNames();
@@ -28,10 +32,9 @@ public class ResourceHandler {
             JsonNode worldFileField = worldFileFields.next();
             String worldFileFieldName = worldFileFieldNames.next();
             if(worldFileField.isArray()){
-                System.out.println(worldFileField);
-                System.out.println(worldFileFieldName);
+                for(JsonNode fieldObject:worldFileField){
+                }
             }
-            continue;
         }
     }
 
