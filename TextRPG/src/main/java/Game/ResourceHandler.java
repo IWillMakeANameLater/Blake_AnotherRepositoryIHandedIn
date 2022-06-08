@@ -11,6 +11,7 @@ import java.util.Iterator;
 
 public class ResourceHandler {
     private final File sourceFile;
+    private GameWorld loadedWorld;
 
     public ResourceHandler(File sourceFile){
         this.sourceFile = sourceFile;
@@ -19,6 +20,8 @@ public class ResourceHandler {
     public void loadFile() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode worldFileNode = objectMapper.readTree(sourceFile);
+
+
         Iterator<JsonNode> worldFileFields = worldFileNode.elements();
         Iterator<String> worldFileFieldNames = worldFileNode.fieldNames();
         while(worldFileFields.hasNext()){
