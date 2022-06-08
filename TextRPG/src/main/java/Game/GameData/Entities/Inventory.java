@@ -1,9 +1,11 @@
 package Game.GameData.Entities;
 
-public class Inventory extends Environment{
+import Game.GameData.GameWorld;
 
-    public Inventory(String name){
-        super(name);
+public abstract class Inventory extends Environment{
+
+    public Inventory(String name, GameWorld world){
+        super(name, world);
     }
 
     @Override

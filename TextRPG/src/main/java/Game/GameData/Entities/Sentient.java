@@ -7,6 +7,5 @@ public abstract class Sentient extends Entity{
 
     public Sentient(String name, GameWorld world){
         super(name, world);
-        entityInventory = new Inventory(getName() + "'s Inventory");
     }
 }
