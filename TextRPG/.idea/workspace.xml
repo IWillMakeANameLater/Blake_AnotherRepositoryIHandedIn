@@ -83,10 +83,27 @@
       <workItem from="1654116247172" duration="938000" />
       <workItem from="1654204523681" duration="2919000" />
       <workItem from="1654720118802" duration="1737000" />
+      <workItem from="1654809480978" duration="2485000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Game/ResourceHandler.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Game.GameData.Entities.Room" memberName="roomDesc" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

@@ -1,6 +1,6 @@
 {
   "WorldSize": 1000,
-  "Room": [
+  "Game.GameData.Entities.Room": [
     {
       "name": "Room1",
       "roomDesc": "A room.",
@@ -13,8 +13,5 @@
       "roomX": "4",
       "roomY": "3"
     }
-  ],
-  "Sentient": [
-
   ]
 }

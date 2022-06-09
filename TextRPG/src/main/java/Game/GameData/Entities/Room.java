@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Room extends Environment {
 
-    private final String roomDesc;
+    private String roomDesc;
 
-    private final int roomX;
-    private final int roomY;
+    private int roomX;
+    private int roomY;
 
 
     private ArrayList<Direction> connectedExits;
@@ -22,6 +22,37 @@ public class Room extends Environment {
         this.roomX = roomX;
         this.roomY = roomY;
         connectedExits = null;
+    }
+
+    public Room(){
+        this.roomDesc = "";
+        this.roomX = 0;
+        this.roomY = 0;
+        connectedExits = null;
+    }
+
+    public String getRoomDesc() {
+        return roomDesc;
+    }
+
+    public void setRoomDesc(String roomDesc) {
+        this.roomDesc = roomDesc;
+    }
+
+    public int getRoomX() {
+        return roomX;
+    }
+
+    public void setRoomX(int roomX) {
+        this.roomX = roomX;
+    }
+
+    public int getRoomY() {
+        return roomY;
+    }
+
+    public void setRoomY(int roomY) {
+        this.roomY = roomY;
     }
 
     @Override

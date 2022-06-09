@@ -3,7 +3,7 @@ package Game.GameData.Entities;
 import Game.GameData.GameWorld;
 
 public abstract class Entity {
-    private final String name;
+    private String name;
 
     private GameWorld world;
 
@@ -11,6 +11,11 @@ public abstract class Entity {
         this.name = name;
         this.world = world;
         world.addEntity(this);
+    }
+
+    public Entity(){
+        this.name = "";
+        this.world = null;
     }
 
     public abstract String observe();
@@ -23,4 +28,12 @@ public abstract class Entity {
         return this.world;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setWorld(GameWorld world){
+        this.world = world;
+        world.addEntity(this);
+    }
 }

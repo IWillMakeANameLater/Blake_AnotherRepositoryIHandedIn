@@ -13,6 +13,10 @@ public abstract class Environment extends Entity {
         containedThings = new ArrayList<>();
     }
 
+    public Environment(){
+        containedThings = new ArrayList<>();
+    }
+
     public ArrayList<Entity> getContainedThings(){
         return this.containedThings;
     }
