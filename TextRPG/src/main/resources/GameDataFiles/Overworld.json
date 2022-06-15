@@ -1,5 +1,6 @@
 {
   "WorldSize": 1000,
+  "WorldName": "Overworld",
   "Game.GameData.Entities.Room": [
     {
       "name": "Room1",
@@ -12,6 +13,18 @@
       "roomDesc": "A room.",
       "roomX": "4",
       "roomY": "3"
+    },
+    {
+      "name": "Room3",
+      "roomDesc": "A room.",
+      "roomX": "8",
+      "roomY": "9"
+    },
+    {
+      "name": "Room4",
+      "roomDesc": "A room.",
+      "roomX": "6",
+      "roomY": "7"
     }
   ]
 }

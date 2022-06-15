@@ -1,19 +1,13 @@
 package Game.GameData.Entities;
 
-import Game.GameData.GameWorld;
-
 import java.util.ArrayList;
 
-public abstract class Environment extends Entity {
+public abstract class Container extends Entity {
 
     private ArrayList<Entity> containedThings;
 
-    public Environment(String name, GameWorld world){
-        super(name, world);
-        containedThings = new ArrayList<>();
-    }
-
-    public Environment(){
+    public Container(){
+        super();
         containedThings = new ArrayList<>();
     }
 

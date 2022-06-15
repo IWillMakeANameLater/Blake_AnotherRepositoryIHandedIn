@@ -1,11 +1,11 @@
 package Game.GameData.Entities;
 
-import Game.GameData.GeneralInfo.Direction;
-import Game.GameData.GameWorld;
+import Game.GameData.Enums.Direction;
+import Game.GameData.Map.GameWorld;
 
 import java.util.ArrayList;
 
-public class Room extends Environment {
+public class Room extends Container {
 
     private String roomDesc;
 
@@ -15,16 +15,8 @@ public class Room extends Environment {
 
     private ArrayList<Direction> connectedExits;
 
-    public Room(String name, GameWorld world, String roomDesc, int roomX, int roomY){
-        super(name, world);
-        world.updateMap(this, roomX, roomY);
-        this.roomDesc = roomDesc;
-        this.roomX = roomX;
-        this.roomY = roomY;
-        connectedExits = null;
-    }
-
     public Room(){
+        super();
         this.roomDesc = "";
         this.roomX = 0;
         this.roomY = 0;
@@ -56,6 +48,12 @@ public class Room extends Environment {
     }
 
     @Override
+    public void setWorld(GameWorld world){
+        super.setWorld(world);
+        world.updateMap(this, this.roomX, this.roomY);
+    }
+
+    @Override
     public String observe(){
         String fullDesc = roomDesc;
 
@@ -66,15 +64,11 @@ public class Room extends Environment {
         return fullDesc;
     }
 
-    public String goIn(){
-        return "You entered " + getName();
-    }
-
     public String checkExits(){
         String allExits = "There are exits in: ";
         if(connectedExits == null){
             for(Direction direction:Direction.values()){
-                if(getWorld().isPlaceEmpty(roomX + direction.locationOffsetY, roomY + direction.locationOffsetY)){
+                if(getWorld().roomAt(roomX + direction.locationOffsetY, roomY + direction.locationOffsetY) != null){
                     connectedExits.add(direction);
                 }
             }

@@ -1,21 +1,19 @@
 package Game.GameData.Entities;
 
-import Game.GameData.GameWorld;
+import Game.GameData.Map.GameWorld;
 
 public abstract class Entity {
-    private String name;
 
+    //Initiated Data
+    private String name;
     private GameWorld world;
 
-    public Entity(String name, GameWorld world){
-        this.name = name;
-        this.world = world;
-        world.addEntity(this);
-    }
+    private Room currentRoom;
 
     public Entity(){
         this.name = "";
         this.world = null;
+        this.currentRoom = null;
     }
 
     public abstract String observe();
@@ -34,6 +32,19 @@ public abstract class Entity {
 
     public void setWorld(GameWorld world){
         this.world = world;
-        world.addEntity(this);
+    }
+
+    public void setCurrentRoom(Room room){
+        //Remove from existing room if already in one
+        if(currentRoom != null){
+            currentRoom.removeEntity(this);
+        }
+
+        this.currentRoom = room;
+        currentRoom.addEntity(this);
+    }
+
+    public Room getCurrentRoom(){
+        return currentRoom;
     }
 }

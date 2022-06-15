@@ -14,8 +14,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,6 +84,7 @@
       <workItem from="1654204523681" duration="2919000" />
       <workItem from="1654720118802" duration="1737000" />
       <workItem from="1654809480978" duration="2485000" />
+      <workItem from="1655325825957" duration="4349000" />
     </task>
     <servers />
   </component>
@@ -94,14 +95,15 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Game/ResourceHandler.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/main/java/Game/Main.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="Game.GameData.GameWorld" memberName="worldMap" />
         <PinnedItemInfo parentTag="Game.GameData.Entities.Room" memberName="roomDesc" />
       </pinned-members>
     </pin-to-top-manager>

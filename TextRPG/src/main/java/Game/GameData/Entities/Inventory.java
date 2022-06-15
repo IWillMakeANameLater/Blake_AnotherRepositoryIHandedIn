@@ -1,11 +1,12 @@
 package Game.GameData.Entities;
 
-import Game.GameData.GameWorld;
+public class Inventory extends Container {
 
-public abstract class Inventory extends Environment{
+    private Sentient owner;
 
-    public Inventory(String name, GameWorld world){
-        super(name, world);
+    public Inventory(Sentient owner){
+        super();
+        this.owner = owner;
     }
 
     @Override

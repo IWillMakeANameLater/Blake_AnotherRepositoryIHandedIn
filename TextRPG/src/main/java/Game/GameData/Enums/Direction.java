@@ -1,4 +1,4 @@
-package Game.GameData.GeneralInfo;
+package Game.GameData.Enums;
 
 public enum Direction {
     NORTH(0, 1),
