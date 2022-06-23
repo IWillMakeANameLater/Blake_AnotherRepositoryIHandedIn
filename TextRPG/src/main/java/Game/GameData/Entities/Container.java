@@ -1,29 +1,23 @@
 package Game.GameData.Entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Container extends Entity {
 
-    private ArrayList<Entity> containedThings;
-
     public Container(){
         super();
-        containedThings = new ArrayList<>();
     }
 
-    public ArrayList<Entity> getContainedThings(){
-        return this.containedThings;
-    }
+    abstract List getContained();
 
-    public void addEntity(Entity thing){
-        containedThings.add(thing);
-    }
+    abstract boolean add(Entity thing);
 
-    public void removeEntity(Entity lookFor){
-        containedThings.remove(lookFor);
-    }
+    abstract boolean remove(Entity lookFor);
 
-    public boolean hasEntity(Entity lookFor){
-        return containedThings.contains(lookFor);
-    }
+    abstract boolean has(Entity lookFor);
+
+    abstract Entity retrieve(int index);
+
+    abstract Entity retrieveFirst(String name);
 }

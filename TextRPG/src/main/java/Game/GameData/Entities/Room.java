@@ -14,6 +14,7 @@ public class Room extends Container {
 
 
     private ArrayList<Direction> connectedExits;
+    private ArrayList<Entity> containedThings;
 
     public Room(){
         super();
@@ -21,6 +22,42 @@ public class Room extends Container {
         this.roomX = 0;
         this.roomY = 0;
         connectedExits = null;
+        containedThings = new ArrayList<>();
+    }
+
+    @Override
+    ArrayList<Entity> getContained() {
+        return this.containedThings;
+    }
+
+    @Override
+    public boolean add(Entity thing) {
+        return containedThings.add(thing);
+    }
+
+    @Override
+    public boolean remove(Entity lookFor) {
+        return containedThings.remove(lookFor);
+    }
+
+    @Override
+    public boolean has(Entity lookFor) {
+        return containedThings.contains(lookFor);
+    }
+
+    @Override
+    public Entity retrieve(int index) {
+        return containedThings.get(index);
+    }
+
+    @Override
+    public Entity retrieveFirst(String name){
+        for(Entity containedEntity:containedThings){
+            if(containedEntity.getName() == name){
+                return containedEntity;
+            }
+        }
+        return null;
     }
 
     public String getRoomDesc() {
@@ -57,25 +94,26 @@ public class Room extends Container {
     public String observe(){
         String fullDesc = roomDesc;
 
-        for(Entity containedThing:super.getContainedThings()){
+        fullDesc += "\n The room contains: ";
+
+        for(Entity containedThing:getContained()){
             fullDesc += "\n" + containedThing.observe();
         }
 
         return fullDesc;
     }
 
-    public String checkExits(){
-        String allExits = "There are exits in: ";
+    public ArrayList<Direction> checkExits(){
         if(connectedExits == null){
+            connectedExits = new ArrayList<>();
             for(Direction direction:Direction.values()){
+                System.out.println(direction);
+                System.out.println(getWorld().roomAt(roomX + direction.locationOffsetY, roomY + direction.locationOffsetY));
                 if(getWorld().roomAt(roomX + direction.locationOffsetY, roomY + direction.locationOffsetY) != null){
                     connectedExits.add(direction);
                 }
             }
         }
-        for(Direction direction:connectedExits){
-            allExits += direction.name() + ", ";
-        }
-        return allExits;
+        return connectedExits;
     }
 }

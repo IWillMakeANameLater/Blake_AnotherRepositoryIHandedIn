@@ -2,6 +2,9 @@ package User;
 
 
 import Game.GameData.Entities.Sentient;
+import Game.GameData.Enums.Direction;
+
+import java.util.ArrayList;
 
 public class Player extends Sentient {
 
@@ -14,7 +17,10 @@ public class Player extends Sentient {
         return "";
     }
 
-    public void Move(){
-
+    public void Move(Direction requestDirection){
+        ArrayList<Direction> validDirections = getCurrentRoom().checkExits();
+        if(validDirections.contains(requestDirection)){
+            setCurrentRoom(getWorld().roomAt(getCurrentRoom().getRoomX() + requestDirection.locationOffsetX, getCurrentRoom().getRoomY() + requestDirection.locationOffsetY));
+        }
     }
 }

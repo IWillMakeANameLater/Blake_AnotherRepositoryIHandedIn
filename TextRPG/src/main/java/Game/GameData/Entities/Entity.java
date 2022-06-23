@@ -1,7 +1,9 @@
 package Game.GameData.Entities;
 
 import Game.GameData.Map.GameWorld;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(value = { "currentRoom" })
 public abstract class Entity {
 
     //Initiated Data
@@ -32,16 +34,22 @@ public abstract class Entity {
 
     public void setWorld(GameWorld world){
         this.world = world;
+        world.addEntity(this);
     }
 
     public void setCurrentRoom(Room room){
         //Remove from existing room if already in one
         if(currentRoom != null){
-            currentRoom.removeEntity(this);
+            currentRoom.remove(this);
         }
 
         this.currentRoom = room;
-        currentRoom.addEntity(this);
+        currentRoom.add(this);
+    }
+
+    public void setCurrentRoom(String roomName){
+        Room foundRoom = (Room) world.findEntity(roomName);
+        setCurrentRoom(foundRoom);
     }
 
     public Room getCurrentRoom(){

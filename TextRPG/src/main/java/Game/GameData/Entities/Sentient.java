@@ -10,5 +10,9 @@ public abstract class Sentient extends Entity{
         entityInventory = new Inventory(this);
     }
 
-
+    @Override
+    public void setName(String name){
+        super.setName(name);
+        entityInventory.setName(name + "_Inventory");
+    }
 }

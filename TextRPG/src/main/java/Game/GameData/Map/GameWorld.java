@@ -4,6 +4,7 @@ import Game.GameData.Entities.Entity;
 import Game.GameData.Entities.Room;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameWorld {
 
@@ -12,10 +13,13 @@ public class GameWorld {
 
     private final Room[][] worldMap;
 
+    private ArrayList<Entity> worldEntities;
+
     public GameWorld(int worldSize, String name){
         this.worldSize = worldSize;
         this.name = name;
         worldMap = new Room[worldSize][worldSize];
+        worldEntities = new ArrayList<>();
     }
 
     private boolean withinBoundaries(int X, int Y){
@@ -42,4 +46,27 @@ public class GameWorld {
     public String getName(){
         return this.name;
     }
+
+    public boolean addEntity(Entity entity) {
+        return worldEntities.add(entity);
+    }
+
+    public boolean removeEntity(Entity entity) {
+        return worldEntities.remove(entity);
+    }
+
+    public Entity findEntity(String searchName){
+        for(Entity entity:worldEntities){
+            if(entity.getName().equals((searchName))){
+                return entity;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Entity> getWorldEntities(){
+        return worldEntities;
+    }
+
+
 }

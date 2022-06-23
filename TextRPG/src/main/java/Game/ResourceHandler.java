@@ -4,6 +4,7 @@ import Game.GameData.Entities.Entity;
 import Game.GameData.Map.GameWorld;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,8 +38,15 @@ public class ResourceHandler {
                     Entity createdObject = (Entity) objectMapper.treeToValue(fieldObject, className);
 
                     createdObject.setWorld(loadedWorld);
+                    if(fieldObject.has("currentRoom")){
+                        createdObject.setCurrentRoom(fieldObject.get("currentRoom").asText());
+                    }
                 }
             }
         }
+    }
+
+    public GameWorld getLoadedWorld(){
+        return loadedWorld;
     }
 }
