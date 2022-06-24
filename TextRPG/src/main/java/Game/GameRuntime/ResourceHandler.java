@@ -1,4 +1,4 @@
-package Game;
+package Game.GameRuntime;
 
 import Game.GameData.Entities.Entity;
 import Game.GameData.Map.GameWorld;

@@ -1,4 +1,4 @@
-package Game;
+package Game.GameRuntime;
 
 import User.Player;
 import User.UserPromptsHandler;

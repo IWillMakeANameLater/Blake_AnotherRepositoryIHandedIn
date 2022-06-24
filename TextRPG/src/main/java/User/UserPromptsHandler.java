@@ -3,6 +3,7 @@ package User;
 import Game.GameData.Entities.Entity;
 import Game.GameData.Enums.Direction;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -25,6 +26,14 @@ public class UserPromptsHandler {
 
     public void parseCommand(String command){
         String[] commandParts = command.split(" ");
+        String commandStart = commandParts[0];
+        String[] commandArgs = Arrays.copyOfRange(commandParts,1, commandParts.length + 1);
+
+        switch(commandStart){
+            case("move") -> {
+
+            }
+        }
         if(commandParts[0].equals("move")){
             switch(commandParts[1]){
                 case("north") -> {

@@ -15,4 +15,8 @@ public abstract class Sentient extends Entity{
         super.setName(name);
         entityInventory.setName(name + "_Inventory");
     }
+
+    public Inventory showInventory(){
+        return entityInventory;
+    }
 }

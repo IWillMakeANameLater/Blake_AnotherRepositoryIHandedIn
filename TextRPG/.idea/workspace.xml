@@ -52,11 +52,11 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Game.Main" />
+      <option name="MAIN_CLASS_NAME" value="Game.GameRuntime.Main" />
       <module name="TextRPG" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Game.*" />
+          <option name="PATTERN" value="Game.GameRuntime.Commands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,7 +90,8 @@
       <workItem from="1655758088220" duration="1993000" />
       <workItem from="1655844395657" duration="3644000" />
       <workItem from="1655930727199" duration="1921000" />
-      <workItem from="1656019310502" duration="1892000" />
+      <workItem from="1656019310502" duration="2334000" />
+      <workItem from="1656103510215" duration="2391000" />
     </task>
     <servers />
   </component>
@@ -102,17 +103,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/User/UserPromptsHandler.java</url>
-          <line>42</line>
+          <line>50</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/User/UserPromptsHandler.java</url>
-          <line>36</line>
+          <line>44</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/User/UserPromptsHandler.java</url>
-          <line>43</line>
+          <line>51</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

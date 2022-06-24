@@ -5,8 +5,26 @@
     {
       "name": "Room1",
       "roomDesc": "A room.",
-      "roomX": "0",
-      "roomY": "0"
+      "roomX": 0,
+      "roomY": 0
+    },
+    {
+      "name": "Room2",
+      "roomDesc": "A room.",
+      "roomX": 1,
+      "roomY": 1
+    },
+    {
+      "name": "Room3",
+      "roomDesc": "A room.",
+      "roomX": 0,
+      "roomY": 1
+    },
+    {
+      "name": "Room2",
+      "roomDesc": "A room.",
+      "roomX": 1,
+      "roomY": 1
     }
   ],
   "Game.GameData.Entities.Sword": [
