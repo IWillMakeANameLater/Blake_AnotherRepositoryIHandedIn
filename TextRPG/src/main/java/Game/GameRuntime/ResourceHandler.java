@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
+/**
+ * Loads all Entities from a specified JSON file.
+ */
 public class ResourceHandler {
     private final File sourceFile;
     private GameWorld loadedWorld;
@@ -18,6 +21,11 @@ public class ResourceHandler {
         this.sourceFile = sourceFile;
     }
 
+    /**
+     * Loads the JSON file attached to this ResourceHandler
+     * @throws IOException - file was not found
+     * @throws ClassNotFoundException - class was not found
+     */
     public void loadFile() throws IOException, ClassNotFoundException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode worldFileNode = objectMapper.readTree(sourceFile);
@@ -46,6 +54,9 @@ public class ResourceHandler {
         }
     }
 
+    /**
+     * @return the world loaded from loading the linked JSON file
+     */
     public GameWorld getLoadedWorld(){
         return loadedWorld;
     }

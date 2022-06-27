@@ -2,6 +2,10 @@ package Game.GameData.Entities;
 
 import java.util.ArrayList;
 
+/**
+ * A Container that can only hold Items in particular.
+ * Unlike room, does not have a specified location in the game world, and is tied to a Sentient Entity instead.
+ */
 public class Inventory extends Container {
 
     private Sentient owner;
@@ -46,7 +50,7 @@ public class Inventory extends Container {
     @Override
     public Item retrieveFirst(String name){
         for(Item containedItem:containedItems){
-            if(containedItem.getName() == name){
+            if(containedItem.getName().equals(name)){
                 return containedItem;
             }
         }

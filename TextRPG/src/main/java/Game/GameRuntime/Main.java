@@ -12,10 +12,9 @@ public class Main {
         test.loadFile();
         Player testPlayer = new Player();
         testPlayer.setWorld(test.getLoadedWorld());
-        testPlayer.setName("Test");
         testPlayer.setCurrentRoom(test.getLoadedWorld().roomAt(0,0));
 
-        UserPromptsHandler mainGame = new UserPromptsHandler(testPlayer);
+        new UserPromptsHandler(testPlayer); // Start Game
 
     }
 }

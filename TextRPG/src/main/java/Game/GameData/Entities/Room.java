@@ -5,6 +5,11 @@ import Game.GameData.Map.GameWorld;
 
 import java.util.ArrayList;
 
+/**
+ * A Container that has a location in the game world.
+ * Because of that, can be entered and exited by entities (currently just the player).
+ * Can store any kind of Entity in it.
+ */
 public class Room extends Container {
 
     private String roomDesc;
@@ -53,33 +58,51 @@ public class Room extends Container {
     @Override
     public Entity retrieveFirst(String name){
         for(Entity containedEntity:containedThings){
-            if(containedEntity.getName() == name){
+            if(containedEntity.getName().equals(name)){
                 return containedEntity;
             }
         }
         return null;
     }
 
+    /**
+     * @return description of this room
+     */
     public String getRoomDesc() {
         return roomDesc;
     }
 
+    /**
+     * @param roomDesc description of the room to set to
+     */
     public void setRoomDesc(String roomDesc) {
         this.roomDesc = roomDesc;
     }
 
+    /**
+     * @return gets the X coordinate of this room on the Map
+     */
     public int getRoomX() {
         return roomX;
     }
 
+    /**
+     * @param roomX X coordinate on the map to set to
+     */
     public void setRoomX(int roomX) {
         this.roomX = roomX;
     }
 
+    /**
+     * @return Y coordinate of this room on the Map
+     */
     public int getRoomY() {
         return roomY;
     }
 
+    /**
+     * @param roomY Y coordinate on the map to set to
+     */
     public void setRoomY(int roomY) {
         this.roomY = roomY;
     }
@@ -92,7 +115,7 @@ public class Room extends Container {
 
     @Override
     public String observe(){
-        String fullDesc = roomDesc;
+        String fullDesc = getName() + " - " + roomDesc;
 
         fullDesc += "\n The room contains: ";
 
@@ -103,13 +126,16 @@ public class Room extends Container {
         return fullDesc;
     }
 
+    /**
+     * Checks all connected rooms and returns which exits are possible to move in.
+     * If it was not already set, will manually do a check in all directions. Otherwise, returns the stored possible exits from a previous check.
+     * @return all possible exits from this room
+     */
     public ArrayList<Direction> checkExits(){
         if(connectedExits == null){
             connectedExits = new ArrayList<>();
             for(Direction direction:Direction.values()){
-                System.out.println(direction);
-                System.out.println(getWorld().roomAt(roomX + direction.locationOffsetY, roomY + direction.locationOffsetY));
-                if(getWorld().roomAt(roomX + direction.locationOffsetY, roomY + direction.locationOffsetY) != null){
+                if(getWorld().roomAt(roomX + direction.locationOffsetX, roomY + direction.locationOffsetY) != null){
                     connectedExits.add(direction);
                 }
             }

@@ -6,18 +6,23 @@ import Game.GameData.Entities.Room;
 import Game.GameData.Map.GameWorld;
 import User.Player;
 
-public class Grab implements Command {
+/**
+ * Command that allows player to put items into the inventory.
+ */
+public class Grab extends Command {
 
     @Override
     public void run(Player player, String[] commandInputs) {
-        GameWorld currentWorld = player.getWorld();
 
         String grabTarget = commandInputs[0];
-        Entity grabbedEntity = currentWorld.findEntity(grabTarget);
+        Entity grabbedEntity = player.getCurrentRoom().retrieveFirst(grabTarget);
 
         if(grabbedEntity instanceof Item){
             player.showInventory().add(grabbedEntity);
-            grabbedEntity.setCurrentRoom((Room) null);
+            grabbedEntity.getCurrentRoom().remove(grabbedEntity);
+            System.out.println(grabbedEntity.getName() + " was added to " + player.getName() + "'s inventory.");
+        } else {
+            System.out.println("Entity " + grabTarget + " could not be found or was not an item");
         }
     }
 

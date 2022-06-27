@@ -1,11 +1,16 @@
 package User;
 
 
+import Game.GameData.Entities.Entity;
+import Game.GameData.Entities.Item;
 import Game.GameData.Entities.Sentient;
 import Game.GameData.Enums.Direction;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a Sentient entity that the user controls while playing.
+ */
 public class Player extends Sentient {
 
     public Player(){
@@ -14,13 +19,7 @@ public class Player extends Sentient {
 
     @Override
     public String observe(){
-        return "";
+        return "you - " + getName();
     }
 
-    public void Move(Direction requestDirection){
-        ArrayList<Direction> validDirections = getCurrentRoom().checkExits();
-        if(validDirections.contains(requestDirection)){
-            setCurrentRoom(getWorld().roomAt(getCurrentRoom().getRoomX() + requestDirection.locationOffsetX, getCurrentRoom().getRoomY() + requestDirection.locationOffsetY));
-        }
-    }
 }

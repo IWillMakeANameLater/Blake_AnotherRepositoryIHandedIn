@@ -21,10 +21,40 @@
       "roomY": 1
     },
     {
-      "name": "Room2",
+      "name": "Room4",
       "roomDesc": "A room.",
       "roomX": 1,
+      "roomY": 0
+    },
+    {
+      "name": "Room5",
+      "roomDesc": "A room.",
+      "roomX": 2,
       "roomY": 1
+    },
+    {
+      "name": "Room6",
+      "roomDesc": "A room.",
+      "roomX": 2,
+      "roomY": 2
+    },
+    {
+      "name": "Room7",
+      "roomDesc": "A room.",
+      "roomX": 1,
+      "roomY": 2
+    },
+    {
+      "name": "Room8",
+      "roomDesc": "A room.",
+      "roomX": 2,
+      "roomY": 0
+    },
+    {
+      "name": "Room9",
+      "roomDesc": "A room.",
+      "roomX": 0,
+      "roomY": 2
     }
   ],
   "Game.GameData.Entities.Sword": [
